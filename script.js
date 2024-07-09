@@ -1,6 +1,6 @@
 const sfxWalrus = new Audio('./resources/sounds/walrus.mp3');
 const sfxSeaLion = new Audio('./resources/sounds/seaLion.mp3');
-const sfxDolphin = new Audio('./resources/sounds/dolphin.mp3');
+const sfxDolphin = new Audio('./resources/sounds/Dolphin.mp3');
 const sfxWhaleBass = new Audio('./resources/sounds/whaleBass.mp3');
 const sfxWhaleMid = new Audio('./resources/sounds/whaleMid.mp3');
 const sfxWhaleHigh = new Audio('./resources/sounds/whaleHigh.mp3');
