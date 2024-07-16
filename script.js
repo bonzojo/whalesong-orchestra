@@ -5,44 +5,50 @@ const sfxWhaleBass = new Audio('./resources/sounds/whaleBass.mp3');
 const sfxWhaleMid = new Audio('./resources/sounds/whaleMid.mp3');
 const sfxWhaleHigh = new Audio('./resources/sounds/whaleHigh.mp3');
 
-const buttons = document.querySelectorAll(".sound").length;
+const soundButtons = document.querySelectorAll(".sound");
 
-for (let i = 0; i < buttons; i++) {
-    document.querySelectorAll("button")[i].addEventListener("click", function () {
-        
-        const buttonInnerHTML = this.innerHTML;
+soundButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const buttonInnerHTML = button.innerHTML.trim();
         makeSound(buttonInnerHTML);
+    });
+});
 
-    })
-
-    document.addEventListener("keypress", function (event) {
-
-        makeSound(event.key);
-    })
-};
+document.addEventListener("keypress", (event) => {
+    makeSound(event.key);
+});
 
 function makeSound(key) {
-
-    switch(key) {
+    switch (key) {
         case "w":
-            sfxWalrus.play();
+            playSound(sfxWalrus);
             break;
         case "s":
-            sfxSeaLion.play();
+            playSound(sfxSeaLion);
             break;
         case "d":
-            sfxDolphin.play();
+            playSound(sfxDolphin);
             break;
         case "j":
-            sfxWhaleBass.play();
+            playSound(sfxWhaleBass);
             break;
         case "k":
-            sfxWhaleMid.play();
+            playSound(sfxWhaleMid);
             break;
         case "l":
-            sfxWhaleHigh.play();
+            playSound(sfxWhaleHigh);
             break;
-        default: "this should not be seen";
+        default:
+            console.warn("Unhandled key press: ", key);
+    }
+}
 
+function playSound(audioElement) {
+    if (audioElement) {
+        audioElement.play().catch(error => {
+            console.error("Error playing sound:", error);
+        });
+    } else {
+        console.error("Invalid audio element provided");
     }
 }
